@@ -6,10 +6,11 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
  
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
+//import org.hibernate.query.Query;
 
 import com.fl.school.modal.Subject;
 import com.fl.school.util.HibernateUtil;
@@ -36,13 +37,7 @@ public class SubjectDaoImpl implements SubjectDao {
 			}
 			e.printStackTrace();
 		}
- 
-		
-		
-		
-		
-		
-		 
+ 	 
 	}
 
 	 
