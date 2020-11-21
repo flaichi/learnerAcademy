@@ -9,11 +9,7 @@ import org.hibernate.Transaction;
 import com.fl.school.modal.User;
 import com.fl.school.util.HibernateUtil;
 
-/**
- * CRUD database operations
- * @author Ramesh Fadatare
- *
- */
+
 public class UserDao {
 	
 	/**
@@ -123,9 +119,9 @@ public class UserDao {
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 			// start a transaction
 			transaction = session.beginTransaction();
-			// get an user object
+			// get an user object in sql we will use "select |* from instructor_tbl"
 			
-			listOfUser = session.createQuery("from User").getResultList();
+			listOfUser = session.createQuery("From User").getResultList();
 			
 			// commit transaction
 			transaction.commit();

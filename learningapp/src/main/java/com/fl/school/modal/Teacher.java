@@ -35,6 +35,8 @@ public class Teacher {
 	@Column(name = "mobile")
 	private String mobile;
 	
+	/*  Teacher to Subject is many to many entity mapping. One teacher 
+	can teach many subjects. one subjcts can be thought by many teacher.*/
 	@ManyToMany(cascade = { CascadeType.MERGE,CascadeType.PERSIST},fetch = FetchType.EAGER)
 	@JoinTable(name = "teacher_subject_tbl",
     joinColumns = @JoinColumn(name = "teacher_id"),

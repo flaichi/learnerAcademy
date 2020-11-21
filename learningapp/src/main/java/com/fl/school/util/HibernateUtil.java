@@ -16,8 +16,8 @@ import com.fl.school.modal.Student;
 import com.fl.school.modal.Subject;
 import com.fl.school.modal.Teacher;
 import com.fl.school.modal.User;
-
-
+ 
+ 
 public class HibernateUtil {
 	private static SessionFactory sessionFactory;
 
@@ -28,15 +28,15 @@ public class HibernateUtil {
 
 				// Hibernate settings equivalent to hibernate.cfg.xml's properties
 				Properties settings = new Properties();
-				settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-				settings.put(Environment.URL, "jdbc:mysql://localhost:3307/test_db?allowPublicKeyRetrieval=true&useSSL=false");
+				settings.put(Environment.DRIVER, "com.mysql.jdbc.Driver");
+				settings.put(Environment.URL, "jdbc:mysql://localhost:3306/school?useSSL=false");
 				settings.put(Environment.USER, "root");
-				settings.put(Environment.PASS, "root123");
-				settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
+				settings.put(Environment.PASS, "farouk");
+				settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
 
 				settings.put(Environment.SHOW_SQL, "true");
 
-				//settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
+				settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 
 				settings.put(Environment.HBM2DDL_AUTO, "update");
 
@@ -47,22 +47,16 @@ public class HibernateUtil {
 				configuration.addAnnotatedClass(Student.class);
 				configuration.addAnnotatedClass(Teacher.class);
 				configuration.addAnnotatedClass(Subject.class);
-				configuration.addAnnotatedClass(ClassSubject.class);			
-							
+				configuration.addAnnotatedClass(ClassSubject.class); // added 4-nov-2020
+
 
 				ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 						.applySettings(configuration.getProperties()).build();
-				/*
-				 * MetadataSources sources = new MetadataSources(serviceRegistry); Metadata
-				 * metadata = sources.getMetadataBuilder().build(); sessionFactory =
-				 * metadata.getSessionFactoryBuilder().build();
-				 */
 				System.out.println("Hibernate Java Config serviceRegistry created");
 				sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-				//return sessionFactory;
+				return sessionFactory;
 
 			} catch (Exception e) {
-				System.out.println(e.getMessage());
 				e.printStackTrace();
 			}
 		}

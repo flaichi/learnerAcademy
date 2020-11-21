@@ -20,11 +20,10 @@ public class Subject {
 	@Column(name = "subject_code")	 
 	private String subjectCode;
 	
+	//The mapped Entity subject with teacher is listed here in subject persistent class.
 	@ManyToMany(mappedBy="subjects")	
 	Set<Teacher> teachers = new HashSet<>();
-	
-//	@OneToMany(mappedBy = "subject",cascade = {CascadeType.PERSIST,CascadeType.REMOVE},orphanRemoval = true,fetch = FetchType.EAGER)
-//    private Set<ClassSubject> classSubject = new HashSet<>();
+
 
 	public Long getSubjectId() {
 		return subjectId;
@@ -49,14 +48,4 @@ public class Subject {
 	public void setSubjectCode(String subjectCode) {
 		this.subjectCode = subjectCode;
 	}
-
-//	public Set<ClassSubject> getClassSubject() {
-//		return classSubject;
-//	}
-//
-//	public void setClassSubject(Set<ClassSubject> classSubject) {
-//		this.classSubject = classSubject;
-//	}
-
-	
 }
